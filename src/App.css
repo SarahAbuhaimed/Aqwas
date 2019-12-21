@@ -1,17 +1,16 @@
+body{
+  height: 100%;
+}
 .App {
   text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
+  margin-top: 10%;
+  height: 30vmin;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
 .App-header {
   background-color: #282c34;
@@ -34,5 +33,64 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+
+.block{
+  background: #2b6264e0 ;
+  position: relative;
+  height: 1000px;
+  background-position: center;
+  background-size: cover;
+
+}
+/*  
+.block::before{
+  background-image: url('https://cmxpv89733.i.lithium.com/t5/image/serverpage/image-id/558473i403F35D6286351A0/image-size/large?v=1.0&px=999') ;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  
+}  */
+
+.text{
+  color: #dff3f2;
+  font-size: 90px;
+}
+
+.btn-primary{
+  background-color: #50b0af;
+color: white;
+border: #000b0c75;
+}
+
+.btn-primary:hover{
+  background-color: #dff3f2;
+  color: gray;
+}
+
+.btn-default{
+  margin-top: 1%;
+  background-color: #e0f2f2;
+  color: #318b8f;
+  font-size: 30px;
+  
+}
+.marker {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  background-color: #000;
+  border: 2px solid #fff;
+  border-radius: 100%;
+  user-select: none;
+  transform: translate(-50%, -50%);
+  &:hover {
+    z-index: 1;
   }
 }
