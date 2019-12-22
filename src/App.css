@@ -65,6 +65,7 @@ body{
   background-color: #50b0af;
 color: white;
 border: #000b0c75;
+font-size: 30px;
 }
 
 .btn-primary:hover{
@@ -73,10 +74,10 @@ border: #000b0c75;
 }
 
 .btn-default{
-  margin-top: 1%;
+  margin-top: 3%;
   background-color: #e0f2f2;
   color: #318b8f;
-  font-size: 30px;
+  font-size: 40px;
   
 }
 .marker {
@@ -90,7 +91,34 @@ border: #000b0c75;
   border-radius: 100%;
   user-select: none;
   transform: translate(-50%, -50%);
-  &:hover {
+}
+  .marker:hover {
     z-index: 1;
   }
+.map-style{
+  
+  width: 100%;
+ height: 100%;
+}
+.map-header{
+  background-color:#fefefe ;
+ border: 2px solid #bcbcbc;
+}
+.btn-map{
+  position: absolute;
+bottom: 20px;
+right: 43.5%;
+
+}
+.header-color{
+  color:#808080;
+}
+.icon{
+ margin-right: 1rem;
+ margin-left: 1rem;
+
+ font-size: 3rem;
+}
+.res-name{
+  color:#4eaaa9;
 }

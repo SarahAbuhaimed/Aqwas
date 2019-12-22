@@ -5,19 +5,30 @@ const TOKEN = 'pk.eyJ1Ijoic2FyYWhhYnUiLCJhIjoiY2p2cDMzbTF2MjRucDQ5bDZpNTI3MmYxMS
 export default class Map extends Component {
     state = {
         viewport: {
-          width: 600,
-          height: 400,
-          latitude: 37.7577,
-          longitude: -122.4376,
+            width: 1800,
+            height: 850,
+          latitude: 0,
+          longitude: 0,
           zoom: 8
         }
       };
     
+handelLocationChange =() =>{
+    var lat = this.props.latitude;
+    var lon = this.props.longitude;
+    if(this.state.viewport.latitude != 0){
+        this.setState({
+            latitude: lat,
+            longitude:lon,
+
+        })
+    }
+}
       render() {
         return (
-          <ReactMapGL
+          <ReactMapGL className="map-style"
             {...this.state.viewport}
-            onViewportChange={(viewport) => this.setState({viewport})}
+            onViewportChange={this.handelLocationChange}
             mapboxApiAccessToken={TOKEN}
           />
         );

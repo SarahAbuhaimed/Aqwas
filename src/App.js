@@ -2,7 +2,18 @@ import React, { Component } from 'react'
 import 'font-awesome/css/font-awesome.min.css';
 import Home from './Home'
 import Suggest from './Suggest';
-import Map from './Map'
+
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Link,
+  Redirect,
+  // withRouter
+} from "react-router-dom";
+
+
 class App extends Component {
 
   constructor(props){
@@ -55,15 +66,14 @@ this.setState({
   }
   render() {
     return (
-      <div className="App block">
-
-      <img src="https://i.ibb.co/Ws32Pw0/New-Project-2.png" alt="New-Project-2" border="0" className="App-logo"/>
-              
-              <h1 className="text">وين ناكل؟</h1>
-              <button className="btn btn-default btn-lg">  <i class="fa fa-sliders"></i></button>
-      <button className="btn btn-default btn-lg " onClick={this.getLocation}> اقترح</button>
-      <Suggest />
-      <Map latitude={this.state.latitude} longitude={this.state.longitude}/>
+      <Router>
+      <div className="App">
+      <Switch>
+      <Route exact path="/" component={Home} render={(props) => <Home {...props} location={this.getLocation} />}/>
+      <Route exact path="/Suggest" component={Suggest} render={(props) => <Suggest {...props} lati={this.state.latitude} long={this.state.longitude}/>}/>
+      
+      </Switch>
+     
      <p> {this.state.latitude}</p>
      <p>{this.state.longitude}</p>
       {
@@ -73,6 +83,7 @@ this.setState({
         null
       }
       </div>
+      </Router>
     )
   }
 }
