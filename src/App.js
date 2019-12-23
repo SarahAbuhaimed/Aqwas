@@ -44,17 +44,6 @@ class App extends Component {
     }
   }
 
-  getData = () =>{
-    
-    fetch(`https://wainnakel.com/api/v1/GenerateFS.php?uid=${this.state.latitude},${this.state.longitude}&get_param=value`)
-    .then((res => {
-      return res.json()
-    }))
-    .catch(err => console.log("error res"+err))
-    .then(data => console.log(data))
-    .catch(err => console.log("error data"+err))
-  }
-
   getCoordinates= (position) =>{
 console.log("la",position.coords.latitude);
 console.log("lo",position.coords.longitude);
@@ -88,11 +77,6 @@ this.setState({
     }
   }
 
-  changePage =()=>{
-    console.log("history",this.props.history);
-     
-    //.push("/restaurant")
-  };
 
   render() {
    
@@ -101,16 +85,12 @@ this.setState({
 
       <div className="App">
       <Switch>
-      <Route exact path="/" component={Home} render={(props) => <Home {...props} location={this.getLocation()} data={this.getData()}/> }/>
+      <Route exact path="/" component={Home} render={(props) => <Home {...props} location={this.getLocation} cor={  this.getCoordinates} er={this.handelLocationError} /> }/>
       <Route exact path="/restaurant" component={Restaurant} render={(props) => <Restaurant {...props} lati={this.state.latitude} long={this.state.longitude} location={this.getLocation}/>}/>
       
       </Switch>
-     <button onClick={() => {
-        this.getLocation();
-         this.getData();
-          this.changePage()
-          }}>get</button>
-  
+   
+      
      <p> {this.state.latitude}</p>
      <p>{this.state.longitude}</p>
   
