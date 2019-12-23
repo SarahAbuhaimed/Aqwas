@@ -50,16 +50,16 @@ class App extends Component {
     .then((res => {
       return res.json()
     }))
-    .catch(err => console.log("error"+err))
+    .catch(err => console.log("error res"+err))
     .then(data => console.log(data))
-    .catch(err => console.log("error"+err))
+    .catch(err => console.log("error data"+err))
   }
 
   getCoordinates= (position) =>{
-console.log("l",position.coords.latitude);
+console.log("la",position.coords.latitude);
 console.log("lo",position.coords.longitude);
-   var lati= position.coords.latitude
-   var long = position.coords.longitude
+   var lati= position.coords.latitude.toString().slice(0,11)
+   var long = position.coords.longitude.toString().slice(0,11)
   
 var lat = parseFloat(lati);
 var lon = parseFloat(long);
@@ -88,20 +88,29 @@ this.setState({
     }
   }
 
- 
+  changePage =()=>{
+    console.log("history",this.props.history);
+     
+    //.push("/restaurant")
+  };
 
   render() {
+   
     return (
       <Router>
+
       <div className="App">
       <Switch>
-      
-      <Route exact path="/" component={Home} render={(props) => <Home {...props} location={this.getLocation}/> }/>
+      <Route exact path="/" component={Home} render={(props) => <Home {...props} location={this.getLocation()} data={this.getData()}/> }/>
       <Route exact path="/restaurant" component={Restaurant} render={(props) => <Restaurant {...props} lati={this.state.latitude} long={this.state.longitude} location={this.getLocation}/>}/>
       
       </Switch>
-     <button onClick={this.getLocation}>get</button>
-     <button onClick={this.getData}>data</button>
+     <button onClick={() => {
+        this.getLocation();
+         this.getData();
+          this.changePage()
+          }}>get</button>
+  
      <p> {this.state.latitude}</p>
      <p>{this.state.longitude}</p>
   
