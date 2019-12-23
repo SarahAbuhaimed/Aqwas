@@ -10,7 +10,6 @@ export default class Suggest extends Component {
                 <header className="map-header">
                     <h1 className="res-name">rest name | name</h1>
                     <div className="header-color">
-                    
                         <h4 >rating | Cat</h4>
                       <div className="icon">
                    <FontAwesomeIcon icon={faMapMarkedAlt} className="icon" /> | <FontAwesomeIcon icon={faShare} className="icon"/>|<FontAwesomeIcon icon={faHeart}  className="icon"/>|<FontAwesomeIcon icon={faImage} className="icon"/>|<FontAwesomeIcon icon={faInfo} className="icon" />
@@ -21,7 +20,8 @@ export default class Suggest extends Component {
                 <Map latitude={this.props.lati} longitude={this.props.long}/>
                 <div className="btn-map">
                     <button className="btn btn-primary btn-lg"> <FontAwesomeIcon icon={faSlidersH}/></button>
-                <button className="btn btn-primary btn-lg"> اقتراح اخر</button>
+                <button className="btn btn-primary btn-lg" onClick={this.props.location}> اقتراح اخر</button>
+                {this.props.lati}
                 </div>
                 </body>
             </div>

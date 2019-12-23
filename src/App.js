@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import 'font-awesome/css/font-awesome.min.css';
 import Home from './Home'
-import Suggest from './Suggest';
+import Suggest from './Restaurant';
 
 
 import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Link,
-  Redirect,
+  // Link,
+  // Redirect,
   // withRouter
 } from "react-router-dom";
 
@@ -21,7 +21,15 @@ class App extends Component {
     this.state={
    latitude:null,
    longitude:null,
-
+   isLoaded: false,
+   items:[],
+   name:'',
+   link:'',
+   cat:'',
+   rating:'',
+   open:'',
+   cateName:'',
+   price:''
     };
 
   }
@@ -34,18 +42,31 @@ class App extends Component {
     }
   }
 
-  getCoordinates= (position) =>{
+  getData = () =>{
+    
+    fetch(`https://wainnakel.com/api/v1/GenerateFS.php?uid=${this.state.latitude},${this.state.longitude}&get_param=value`)
+    .then((res => {
+      return res.json()
+    }))
+    .catch(err => console.log("error"+err))
+    .then(data => console.log(data))
+    .catch(err => console.log("error"+err))
+  }
 
-   var lati= position.coords.latitude.toString().slice(0,11);
-   var long = position.coords.longitude.toString().slice(0,11);
+  getCoordinates= (position) =>{
+console.log("l",position.coords.latitude);
+console.log("lo",position.coords.longitude);
+   var lati= position.coords.latitude
+   var long = position.coords.longitude
   
 var lat = parseFloat(lati);
-var lon = parseFloat(long)
+var lon = parseFloat(long);
 
 this.setState({
   latitude: lat,
   longitude:lon,
 })
+
   }
 
   handelLocationError=(error)=>{
@@ -64,24 +85,38 @@ this.setState({
         break;
     }
   }
+
+ 
+
   render() {
     return (
       <Router>
       <div className="App">
       <Switch>
-      <Route exact path="/" component={Home} render={(props) => <Home {...props} location={this.getLocation} />}/>
-      <Route exact path="/Suggest" component={Suggest} render={(props) => <Suggest {...props} lati={this.state.latitude} long={this.state.longitude}/>}/>
+      
+      <Route exact path="/" component={Home} render={(props) => <Home {...props} location={this.getLocation}/> }/>
+      <Route exact path="/Suggest" component={Suggest} render={(props) => <Suggest {...props} lati={this.state.latitude} long={this.state.longitude} location={this.getLocation}/>}/>
       
       </Switch>
      
      <p> {this.state.latitude}</p>
      <p>{this.state.longitude}</p>
+     {/* <Data lat={this.state.latitude} lon={this.state.longitude}/> */}
       {
         this.state.latitude && this.state.longitude?
-        <img src={'https://wainnakel.com/api/v1/GenerateFS.php?uid=${this.state.latitude},${this.state.longitude}&get_param=value'} alt="" />
+        <ul>
+        <li>
+       name: {this.state.name}
+       link: {this.state.link}
+        cat:{this.state.cat}
+        rating:{this.state.rating}
+        open:{this.state.open}
+        </li>
+       </ul>
         :
-        null
+        <p>not working</p>
       }
+       
       </div>
       </Router>
     )

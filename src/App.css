@@ -38,23 +38,9 @@ body{
 
 
 .block{
-  background: #2b6264e0 ;
-  position: relative;
-  height: 1000px;
-  background-position: center;
-  background-size: cover;
-
+  background-image: url('https://i.ibb.co/Vv1gW7y/Screen-Shot-2019-12-22-at-11.png');
+  height: 100rem;
 }
-/*  
-.block::before{
-  background-image: url('https://cmxpv89733.i.lithium.com/t5/image/serverpage/image-id/558473i403F35D6286351A0/image-size/large?v=1.0&px=999') ;
-  content: '';
-  display: block;
-  height: 100%;
-  position: absolute;
-  width: 100%;
-  
-}  */
 
 .text{
   color: #dff3f2;
@@ -121,4 +107,8 @@ right: 43.5%;
 }
 .res-name{
   color:#4eaaa9;
+}
+.marker-l{
+  color:#50b0af;
+  font-size: 7rem;
 }
