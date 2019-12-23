@@ -11,8 +11,8 @@ const restaurantSchema = new Schema({
     catName:{ type: String},
     price:{type:String},
     imgs:{type:String},
-    longitude:{type:Float32Array},
-    latitude:{type:Float32Array}
+    lon:{type:Float32Array},
+    lat:{type:Float32Array}
 },{timestamps : true})
 
 const Restaurant = mongoose.model('Restaurant', restaurantSchema)

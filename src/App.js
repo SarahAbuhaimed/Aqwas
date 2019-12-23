@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import 'font-awesome/css/font-awesome.min.css';
 import Home from './Home'
-import Suggest from './Restaurant';
+import Restaurant from './Restaurant';
 
 
 import {
@@ -19,8 +19,10 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state={
-   latitude:null,
-   longitude:null,
+  //  latitude:26.2716025,
+  //  longitude:50.2017993,
+  latitude:null,
+  longitude:null,
    isLoaded: false,
    items:[],
    name:'',
@@ -95,13 +97,14 @@ this.setState({
       <Switch>
       
       <Route exact path="/" component={Home} render={(props) => <Home {...props} location={this.getLocation}/> }/>
-      <Route exact path="/Suggest" component={Suggest} render={(props) => <Suggest {...props} lati={this.state.latitude} long={this.state.longitude} location={this.getLocation}/>}/>
+      <Route exact path="/restaurant" component={Restaurant} render={(props) => <Restaurant {...props} lati={this.state.latitude} long={this.state.longitude} location={this.getLocation}/>}/>
       
       </Switch>
-     
+     <button onClick={this.getLocation}>get</button>
+     <button onClick={this.getData}>data</button>
      <p> {this.state.latitude}</p>
      <p>{this.state.longitude}</p>
-     {/* <Data lat={this.state.latitude} lon={this.state.longitude}/> */}
+  
       {
         this.state.latitude && this.state.longitude?
         <ul>

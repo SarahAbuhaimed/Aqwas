@@ -28,8 +28,8 @@ router.post('/restaurant', (req, res)=>{
     catName: req.body.catName,
     price:req.body.price,
     imgs:req.body.imgs,
-    longitude:req.body.longitude,
-    latitude:req.body.latitude
+    lon:req.body.longitude,
+    lat:req.body.latitude
   }
 
   let restaurants = new Restaurant(data)

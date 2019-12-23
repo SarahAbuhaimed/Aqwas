@@ -3,7 +3,7 @@ import 'font-awesome/css/font-awesome.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Map from'./Map'
 import { faShare,faHeart,faImage,faInfo,faSlidersH,faMapMarkedAlt} from "@fortawesome/free-solid-svg-icons";
-export default class Suggest extends Component {
+export default class Restaurant extends Component {
     render() {
         return (
             <div>
