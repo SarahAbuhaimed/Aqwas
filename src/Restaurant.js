@@ -17,11 +17,11 @@ export default class Restaurant extends Component {
                    </div>
                 </header>
                 <body>
-                <Map latitude={this.props.lati} longitude={this.props.long}/>
+                <Map latitude={this.props.latitude} longitude={this.props.longitude}/>
                 <div className="btn-map">
                     <button className="btn btn-primary btn-lg"> <FontAwesomeIcon icon={faSlidersH}/></button>
                 <button className="btn btn-primary btn-lg" onClick={this.props.location}> اقتراح اخر</button>
-                {this.props.lati}
+                
                 </div>
                 </body>
             </div>

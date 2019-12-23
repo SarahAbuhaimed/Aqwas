@@ -22,6 +22,7 @@ constructor(props) {
   };
 
 }
+
   render() {
     const {viewport} = this.state;
     
@@ -38,4 +39,3 @@ constructor(props) {
     )
   }
 }
-    
